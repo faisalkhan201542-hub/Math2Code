@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Math2Code — Formula Scanner Test Document</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+  <style>
+    :root {
+      --primary: #0d9488;
+      --primary-dark: #0f766e;
+      --bg: #f8fafc;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding: 24px;
+    }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+      color: white;
+      padding: 32px;
+      border-radius: 16px;
+      margin-bottom: 24px;
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2);
+    }
+    .header-badge {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(13, 148, 136, 0.25);
+      border: 1px solid rgba(45, 212, 191, 0.4);
+      color: #2dd4bf;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+    }
+    .header h1 { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
+    .header p { color: #cbd5e1; font-size: 14px; max-width: 800px; }
+    .header-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: white;
+      color: #0f172a;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      transition: all 0.2s;
+    }
+    .btn:hover { background: #f1f5f9; transform: translateY(-1px); }
+    .btn-primary { background: var(--primary); color: white; border-color: var(--primary); }
+    .btn-primary:hover { background: var(--primary-dark); }
+
+    .instructions {
+      background: white;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--primary);
+      padding: 18px 24px;
+      border-radius: 12px;
+      margin-bottom: 24px;
+    }
+    .instructions h2 { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 8px; }
+    .instructions ol { padding-left: 20px; font-size: 13px; color: var(--text-muted); }
+    .instructions li { margin-bottom: 6px; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+      gap: 20px;
+    }
+    @media (max-width: 600px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      display: flex;
+      flex-col;
+      gap: 14px;
+    }
+    .card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #f1f5f9;
+      padding-bottom: 10px;
+    }
+    .card-title { font-size: 15px; font-weight: 700; color: #1e293b; }
+    .card-cat {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--primary);
+      background: #ccfbf1;
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+
+    .image-container {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 180px;
+      position: relative;
+    }
+    .image-container img {
+      width: 100%;
+      height: auto;
+      max-height: 200px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .latex-box {
+      background: #f1f5f9;
+      border-radius: 8px;
+      padding: 12px;
+      text-align: center;
+      font-size: 16px;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 10px;
+      border-top: 1px solid #f1f5f9;
+      gap: 8px;
+    }
+    .card-footer-buttons {
+      display: flex;
+      gap: 6px;
+    }
+    .btn-sm {
+      font-size: 11px;
+      padding: 5px 10px;
+      border-radius: 6px;
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      color: #334155;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .btn-sm:hover { background: #e2e8f0; }
+
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #0f172a;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      display: none;
+      z-index: 1000;
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .header-actions, .instructions, .btn-sm { display: none !important; }
+      .card { page-break-inside: avoid; border: 1px solid #999; margin-bottom: 20px; }
+      .header { background: #1e293b !important; -webkit-print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="header-badge">✨ Math2Code Vision OCR Test Document</div>
+      <h1>Official Math Formula Test Sheet</h1>
+      <p>
+        Use this printable and interactive test sheet to test Math2Code's Vision OCR engine.
+        Each card below contains a verified mathematical formula in handwritten or textbook style.
+        You can copy the image directly to your clipboard (hit <strong>Ctrl+V</strong> in Math2Code), download as PNG/SVG, or print this sheet for mobile camera scanning!
+      </p>
+      <div class="header-actions">
+        <button class="btn btn-primary" onclick="window.print()">🖨️ Print / Save as PDF</button>
+        <a class="btn" href="/formula-scanner">🚀 Back to Formula Scanner</a>
+        <a class="btn" href="/equations">📚 View 26 Equations</a>
+      </div>
+    </div>
+
+    <div class="instructions">
+      <h2>How to Test Formula Scanner (5 Easy Ways):</h2>
+      <ol>
+        <li><strong>Clipboard Paste (Fastest):</strong> Click "📋 Copy Image to Clipboard" on any card below, go back to Math2Code (<a href="/formula-scanner">/formula-scanner</a>), and press <kbd>Ctrl+V</kbd>.</li>
+        <li><strong>Download & Drag:</strong> Click "📥 Download File" on any card, then drag the file directly onto the Math2Code upload zone.</li>
+        <li><strong>Sample Gallery (In-App):</strong> On the Formula Scanner page, simply click any of the 8 cards in the built-in sample gallery.</li>
+        <li><strong>Mobile Camera:</strong> Print this document (or open on your phone/tablet) and use the "Camera" button to snap a photo!</li>
+        <li><strong>Live Gemini Vision:</strong> Add a free Google Gemini API key to scan any custom handwritten notes or textbook pages.</li>
+      </ol>
+    </div>
+
+    <div class="grid">
+
+      <div class="card" id="card-0">
+        <div class="card-head">
+          <span class="card-title">#1 — Sigmoid Activation</span>
+          <span class="card-cat">Machine Learning</span>
+        </div>
+        <div class="image-container">
+          <img id="img-0" src="./test-sigmoid.svg" alt="Sigmoid Activation" />
+        </div>
+        <div class="latex-box">
+          $$\sigma(z) = \frac{1}{1 + e^{-z}}$$
+        </div>
+        <div class="card-footer">
+          <span style="font-size: 11px; color: #64748b; font-family: monospace;">test-sigmoid.svg</span>
+          <div class="card-footer-buttons">
+            <button class="btn-sm" onclick="copyImageToClipboard('img-0', 'Sigmoid Activation')">📋 Copy Image</button>
+            <button class="btn-sm" onclick="copyLatex('\sigma(z) = \frac{1}{1 + e^{-z}}')">Copy LaTeX</button>
+            <a class="btn-sm" href="./test-sigmoid.svg" download="test-sigmoid.svg">📥 Download</a>
+          </div>
+        </div>
+      </div>
+    
+      <div class="card" id="card-1">
+        <div class="card-head">
+          <span class="card-title">#2 — Mean Squared Error (MSE)</span>
+          <span class="card-cat">Statistics</span>
+        </div>
+        <div class="image-container">
+          <img id="img-1" src="./test-mse.svg" alt="Mean Squared Error (MSE)" />
+        </div>
+        <div class="latex-box">
+          $$\operatorname{MSE} = \frac{1}{n}\sum_{i=1}^{n} (y_i - \hat{y}_i)^2$$
+        </div>
+        <div class="card-footer">
+          <span style="font-size: 11px; color: #64748b; font-family: monospace;">test-mse.svg</span>
+          <div class="card-footer-buttons">
+            <button class="btn-sm" onclick="copyImageToClipboard('img-1', 'Mean Squared Error (MSE)')">📋 Copy Image</button>
+            <button class="btn-sm" onclick="copyLatex('\operatorname{MSE} = \frac{1}{n}\sum_{i=1}^{n} (y_i - \hat{y}_i)^2')">Copy LaTeX</button>
+            <a class="btn-sm" href="./test-mse.svg" download="test-mse.svg">📥 Download</a>
+          </div>
+        </div>
+      </div>
+    
+      <div class="card" id="card-2">
+        <div class="card-head">
+          <span class="card-title">#3 — ReLU Activation</span>
+          <span class="card-cat">Deep Learning</span>
+        </div>
+        <div class="image-container">
+          <img id="img-2" src="./test-relu.svg" alt="ReLU Activation" />
+        </div>
+        <div class="latex-box">
+          $$\operatorname{ReLU}(x) = \max(0, x)$$
+        </div>
+        <div class="card-footer">
+          <span style="font-size: 11px; color: #64748b; font-family: monospace;">test-relu.svg</span>
+          <div class="card-footer-buttons">
+            <button class="btn-sm" onclick="copyImageToClipboard('img-2', 'ReLU Activation')">📋 Copy Image</button>
+            <button class="btn-sm" onclick="copyLatex('\operatorname{ReLU}(x) = \max(0, x)')">Copy LaTeX</button>
+            <a class="btn-sm" href="./test-relu.svg" download="test-relu.svg">📥 Download</a>
+          </div>
+        </div>
+      </div>
+    
+      <div class="card" id="card-3">
+        <div class="card-head">
+          <span class="card-title">#4 — Softmax Distribution</span>
+          <span class="card-cat">Deep Learning</span>
+        </div>
+        <div class="image-container">
+          <img id="img-3" src="./test-softmax.svg" alt="Softmax Distribution" />
+        </div>
+        <div class="latex-box">
+          $$p_i = \frac{e^{z_i}}{\sum_{j=1}^{K} e^{z_j}}$$
+        </div>
+        <div class="card-footer">
+          <span style="font-size: 11px; color: #64748b; font-family: monospace;">test-softmax.svg</span>
+          <div class="card-footer-buttons">
+            <button class="btn-sm" onclick="copyImageToClipboard('img-3', 'Softmax Distribution')">📋 Copy Image</button>
+            <button class="btn-sm" onclick="copyLatex('p_i = \frac{e^{z_i}}{\sum_{j=1}^{K} e^{z_j}}')">Copy LaTeX</button>
+            <a class="btn-sm" href="./test-softmax.svg" download="test-softmax.svg">📥 Download</a>
+          </div>
+        </div>
+      </div>
+    
+      <div class="card" id="card-4">
+        <div class="card-head">
+          <span class="card-title">#5 — Euclidean Distance</span>
+          <span class="card-cat">Linear Algebra</span>
+        </div>
+        <div class="image-container">
+          <img id="img-4" src="./test-euclidean.svg" alt="Euclidean Distance" />
+        </div>
+        <div class="latex-box">
+          $$d(\mathbf{x}, \mathbf{y}) = \sqrt{\sum_{i=1}^{n} (x_i - y_i)^2}$$
+        </div>
+        <div class="card-footer">
+          <span style="font-size: 11px; color: #64748b; font-family: monospace;">test-euclidean.svg</span>
+          <div class="card-footer-buttons">
+            <button class="btn-sm" onclick="copyImageToClipboard('img-4', 'Euclidean Distance')">📋 Copy Image</button>
+            <button class="btn-sm" onclick="copyLatex('d(\mathbf{x}, \mathbf{y}) = \sqrt{\sum_{i=1}^{n} (x_i - y_i)^2}')">Copy LaTeX</button>
+            <a class="btn-sm" href="./test-euclidean.svg" download="test-euclidean.svg">📥 Download</a>
+          </div>
+        </div>
+      </div>
+    
+      <div class="card" id="card-5">
+        <div class="card-head">
+          <span class="card-title">#6 — Gradient Descent Update Rule</span>
+          <span class="card-cat">Optimization</span>
+        </div>
+        <div class="image-container">
+          <img id="img-5" src="./test-gradient-descent.svg" alt="Gradient Descent Update Rule" />
+        </div>
+        <div class="latex-box">
+          $$\theta_{t+1} = \theta_t - \eta \nabla J(\theta_t)$$
+        </div>
+        <div class="card-footer">
+          <span style="font-size: 11px; color: #64748b; font-family: monospace;">test-gradient-descent.svg</span>
+          <div class="card-footer-buttons">
+            <button class="btn-sm" onclick="copyImageToClipboard('img-5', 'Gradient Descent Update Rule')">📋 Copy Image</button>
+            <button class="btn-sm" onclick="copyLatex('\theta_{t+1} = \theta_t - \eta \nabla J(\theta_t)')">Copy LaTeX</button>
+            <a class="btn-sm" href="./test-gradient-descent.svg" download="test-gradient-descent.svg">📥 Download</a>
+          </div>
+        </div>
+      </div>
+    
+      <div class="card" id="card-6">
+        <div class="card-head">
+          <span class="card-title">#7 — Binary Cross-Entropy Loss</span>
+          <span class="card-cat">Deep Learning</span>
+        </div>
+        <div class="image-container">
+          <img id="img-6" src="./test-bce.svg" alt="Binary Cross-Entropy Loss" />
+        </div>
+        <div class="latex-box">
+          $$L = -\frac{1}{n}\sum_{i=1}^{n} [y_i \log(p_i) + (1-y_i) \log(1-p_i)]$$
+        </div>
+        <div class="card-footer">
+          <span style="font-size: 11px; color: #64748b; font-family: monospace;">test-bce.svg</span>
+          <div class="card-footer-buttons">
+            <button class="btn-sm" onclick="copyImageToClipboard('img-6', 'Binary Cross-Entropy Loss')">📋 Copy Image</button>
+            <button class="btn-sm" onclick="copyLatex('L = -\frac{1}{n}\sum_{i=1}^{n} [y_i \log(p_i) + (1-y_i) \log(1-p_i)]')">Copy LaTeX</button>
+            <a class="btn-sm" href="./test-bce.svg" download="test-bce.svg">📥 Download</a>
+          </div>
+        </div>
+      </div>
+    
+      <div class="card" id="card-7">
+        <div class="card-head">
+          <span class="card-title">#8 — Z-Score Standardization</span>
+          <span class="card-cat">Statistics</span>
+        </div>
+        <div class="image-container">
+          <img id="img-7" src="./test-zscore.svg" alt="Z-Score Standardization" />
+        </div>
+        <div class="latex-box">
+          $$z = \frac{x - \mu}{\sigma}$$
+        </div>
+        <div class="card-footer">
+          <span style="font-size: 11px; color: #64748b; font-family: monospace;">test-zscore.svg</span>
+          <div class="card-footer-buttons">
+            <button class="btn-sm" onclick="copyImageToClipboard('img-7', 'Z-Score Standardization')">📋 Copy Image</button>
+            <button class="btn-sm" onclick="copyLatex('z = \frac{x - \mu}{\sigma}')">Copy LaTeX</button>
+            <a class="btn-sm" href="./test-zscore.svg" download="test-zscore.svg">📥 Download</a>
+          </div>
+        </div>
+      </div>
+    
+    </div>
+  </div>
+
+  <div id="toast" class="toast">Image copied to clipboard! Switch to Math2Code and press Ctrl+V</div>
+
+  <script>
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.style.display = 'block';
+      setTimeout(() => { toast.style.display = 'none'; }, 3000);
+    }
+
+    async function copyImageToClipboard(imgId, name) {
+      try {
+        const img = document.getElementById(imgId);
+        const canvas = document.createElement('canvas');
+        canvas.width = 500;
+        canvas.height = 240;
+        const ctx = canvas.getContext('2d');
+
+        // Draw image onto canvas
+        const tempImg = new Image();
+        tempImg.crossOrigin = 'anonymous';
+        tempImg.onload = () => {
+          ctx.drawImage(tempImg, 0, 0, 500, 240);
+          canvas.toBlob(async (blob) => {
+            if (!blob) return;
+            try {
+              await navigator.clipboard.write([
+                new ClipboardItem({ 'image/png': blob })
+              ]);
+              showToast('✓ ' + name + ' image copied! Switch to Math2Code & press Ctrl+V');
+            } catch (err) {
+              // Fallback
+              showToast('Download the file and drag it into Math2Code.');
+            }
+          }, 'image/png');
+        };
+        tempImg.src = img.src;
+      } catch (err) {
+        showToast('Clipboard write failed. Please use Download button.');
+      }
+    }
+
+    function copyLatex(latex) {
+      navigator.clipboard.writeText(latex);
+      showToast('✓ LaTeX copied to clipboard!');
+    }
+  </script>
+</body>
+</html>
