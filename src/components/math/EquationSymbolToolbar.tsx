@@ -77,7 +77,7 @@ export const EquationSymbolToolbar: React.FC<EquationSymbolToolbarProps> = ({
   ] as const;
 
   return (
-    <div className={`space-y-2 p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-900/60 ${className}`}>
+    <div className={`space-y-2 p-3 rounded-xl glass-panel border border-white/80 dark:border-white/10 ${className}`}>
       {/* Category Filter Pills */}
       <div className="flex items-center justify-between gap-2 flex-wrap pb-1">
         <span className="text-[11px] font-mono font-medium text-slate-500 uppercase tracking-wider">
@@ -89,10 +89,10 @@ export const EquationSymbolToolbar: React.FC<EquationSymbolToolbarProps> = ({
               key={cat.id}
               type="button"
               onClick={() => setActiveCategory(cat.id)}
-              className={`px-2 py-0.5 rounded text-[11px] font-medium transition-colors ${
+              className={`px-2.5 py-0.5 rounded-md text-[11px] font-medium transition-all cursor-pointer ${
                 activeCategory === cat.id
-                  ? 'bg-slate-800 text-white dark:bg-teal-600 dark:text-white'
-                  : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800'
+                  ? 'bg-gradient-to-r from-teal-500 to-emerald-600 text-white shadow-xs'
+                  : 'text-slate-600 dark:text-slate-400 hover:bg-white/50 dark:hover:bg-slate-800/50'
               }`}
             >
               {cat.label}
@@ -110,7 +110,7 @@ export const EquationSymbolToolbar: React.FC<EquationSymbolToolbarProps> = ({
             onClick={() => onInsert(item.snippet)}
             title={item.tooltip}
             aria-label={item.tooltip}
-            className="px-2.5 py-1 rounded bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 hover:border-teal-500/60 dark:hover:border-teal-500/60 hover:bg-teal-50/50 dark:hover:bg-teal-950/40 text-slate-800 dark:text-slate-200 font-mono text-xs transition-colors shadow-2xs active:scale-95 flex items-center justify-center min-w-[34px] h-[30px]"
+            className="px-2.5 py-1 rounded-lg glass-panel glass-interactive border border-white/60 dark:border-white/10 bg-white/60 dark:bg-slate-900/50 backdrop-blur-md hover:border-teal-400/80 dark:hover:border-teal-500/80 hover:text-teal-600 dark:hover:text-teal-300 text-slate-800 dark:text-slate-200 font-mono text-xs transition-all shadow-xs active:scale-95 flex items-center justify-center min-w-[34px] h-[30px] cursor-pointer"
           >
             {item.label}
           </button>

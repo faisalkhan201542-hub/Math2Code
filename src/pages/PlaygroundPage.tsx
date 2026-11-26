@@ -315,13 +315,13 @@ export const PlaygroundPage: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Top Banner */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-cyan-500/10 via-teal-500/5 to-indigo-500/10 dark:from-slate-900 dark:via-indigo-950 dark:to-slate-900 border border-cyan-500/20 dark:border-slate-800 p-5 sm:p-6 shadow-sm">
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-cyan-500/15 via-teal-500/10 to-indigo-500/15 dark:from-slate-900/70 dark:via-indigo-950/60 dark:to-slate-900/70 backdrop-blur-2xl border border-white/80 dark:border-white/10 p-5 sm:p-7 shadow-[0_8px_32px_0_rgba(6,182,212,0.08)] shadow-[inset_0_1px_1px_rgba(255,255,255,0.95)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.12)]">
         <div className="absolute top-0 right-0 w-80 h-80 bg-radial from-cyan-500/15 via-transparent to-transparent blur-2xl pointer-events-none -mr-20 -mt-20" />
         <div className="absolute bottom-0 left-1/3 -mb-10 w-60 h-60 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="flex items-start gap-4">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-cyan-500/30 shrink-0">
+            <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-cyan-500 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-cyan-500/30 ring-1 ring-white/40 shrink-0">
               <Cpu className="w-6 h-6" />
             </div>
             <div className="space-y-1 max-w-2xl">
@@ -355,7 +355,7 @@ export const PlaygroundPage: React.FC = () => {
               onClick={handleRunCode}
               isLoading={isRunning}
               leftIcon={<Play className="w-4 h-4 fill-white" />}
-              className="bg-emerald-600 hover:bg-emerald-500 shadow-md font-semibold cursor-pointer"
+              className="bg-emerald-600 hover:bg-emerald-500 shadow-md font-semibold cursor-pointer rounded-xl"
             >
               Run Script (Ctrl+Enter)
             </Button>
@@ -364,8 +364,8 @@ export const PlaygroundPage: React.FC = () => {
       </div>
 
       {/* Preset Selector Bar */}
-      <div className="flex items-center gap-2 overflow-x-auto pb-1">
-        <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 shrink-0 flex items-center gap-1 mr-1">
+      <div className="flex items-center gap-2 overflow-x-auto pb-1 glass-panel p-2.5 rounded-2xl border border-white/80 dark:border-white/10 shadow-sm">
+        <span className="text-xs font-semibold text-slate-700 dark:text-slate-300 shrink-0 flex items-center gap-1.5 pl-2 mr-1">
           <Sigma className="w-3.5 h-3.5 text-teal-500" />
           Mathematical Presets:
         </span>
@@ -374,10 +374,10 @@ export const PlaygroundPage: React.FC = () => {
             key={preset.id}
             type="button"
             onClick={() => handleSelectPreset(preset)}
-            className={`px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-all cursor-pointer flex items-center gap-1.5 ${
+            className={`px-3 py-1.5 rounded-xl text-xs font-medium whitespace-nowrap transition-all cursor-pointer flex items-center gap-1.5 backdrop-blur-md shadow-2xs ${
               selectedPresetId === preset.id
-                ? 'bg-teal-600 text-white shadow-xs font-semibold ring-2 ring-teal-500/40'
-                : 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-teal-400'
+                ? 'bg-teal-600 text-white shadow-md shadow-teal-600/30 font-semibold ring-2 ring-teal-400/50'
+                : 'bg-white/60 dark:bg-slate-800/60 border border-white/80 dark:border-white/10 text-slate-700 dark:text-slate-200 hover:border-teal-400/60 hover:bg-white/90'
             }`}
           >
             <span>{preset.name}</span>
@@ -391,7 +391,7 @@ export const PlaygroundPage: React.FC = () => {
         {/* LEFT COLUMN: Mathematical Context Banner & Code Editor (6 cols) */}
         <div className="lg:col-span-6 space-y-4">
           {/* Active Mathematical Formula Bar */}
-          <div className="p-4 rounded-xl border border-teal-500/20 dark:border-teal-500/30 bg-teal-50/50 dark:bg-slate-900/80 shadow-xs space-y-3">
+          <div className="p-4 rounded-2xl border border-teal-500/25 dark:border-teal-500/30 glass-panel shadow-sm space-y-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-teal-500 animate-pulse" />

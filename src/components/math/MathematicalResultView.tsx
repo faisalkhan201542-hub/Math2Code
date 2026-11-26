@@ -55,10 +55,10 @@ export const MathematicalResultView: React.FC<MathematicalResultViewProps> = ({
 
   return (
     <div
-      className={`rounded-xl border border-teal-500/30 dark:border-teal-500/40 bg-white dark:bg-slate-900/90 shadow-md overflow-hidden flex flex-col ${className}`}
+      className={`rounded-2xl border border-white/80 dark:border-white/10 glass-panel shadow-xl overflow-hidden flex flex-col ${className}`}
     >
       {/* Header bar */}
-      <div className="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-teal-500/10 via-emerald-500/5 to-cyan-500/10 dark:from-teal-950/50 dark:via-slate-900 dark:to-emerald-950/40 border-b border-teal-500/20 dark:border-teal-500/30">
+      <div className="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-teal-500/15 via-emerald-500/10 to-cyan-500/15 dark:from-teal-950/60 dark:via-slate-900/70 dark:to-emerald-950/50 backdrop-blur-md border-b border-white/60 dark:border-white/5">
         <div className="flex items-center gap-2.5">
           <div className="w-7 h-7 rounded-lg bg-teal-500 text-white flex items-center justify-center shadow-xs">
             <Sigma className="w-4 h-4" />
@@ -86,7 +86,7 @@ export const MathematicalResultView: React.FC<MathematicalResultViewProps> = ({
               variant="primary"
               size="sm"
               onClick={onRun}
-              className="text-xs h-7 px-3 bg-teal-600 hover:bg-teal-500"
+              className="text-xs h-7 px-3 bg-teal-600 hover:bg-teal-500 rounded-lg shadow-sm"
             >
               Evaluate
             </Button>
@@ -96,7 +96,7 @@ export const MathematicalResultView: React.FC<MathematicalResultViewProps> = ({
 
       <div className="p-4 sm:p-5 space-y-5 overflow-y-auto max-h-[500px]">
         {/* Active LaTeX Equation Card */}
-        <div className="p-3.5 rounded-xl border border-teal-500/20 dark:border-teal-500/30 bg-teal-50/40 dark:bg-teal-950/20">
+        <div className="p-4 rounded-xl border border-teal-500/25 dark:border-teal-400/20 bg-white/50 dark:bg-teal-950/20 backdrop-blur-md shadow-inner">
           <div className="flex items-center justify-between text-[11px] font-semibold uppercase tracking-wider text-teal-700 dark:text-teal-300 mb-2">
             <span className="flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5 text-teal-500" />

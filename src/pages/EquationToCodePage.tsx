@@ -125,12 +125,14 @@ def sigmoid(z: np.ndarray) -> np.ndarray:
 
   return (
     <div className="space-y-6 animate-in fade-in duration-200">
-      {/* Page Header Hero Card */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-teal-500/10 via-emerald-500/5 to-cyan-500/10 dark:from-teal-950/40 dark:via-slate-900/60 dark:to-emerald-950/30 border border-teal-500/20 dark:border-teal-500/30 p-5 sm:p-6 shadow-sm">
-        <div className="absolute top-0 right-0 w-80 h-80 bg-radial from-teal-500/15 via-transparent to-transparent blur-2xl pointer-events-none -mr-20 -mt-20" />
+      {/* Page Header Hero Card with Specular Glassmorphism */}
+      <div className="glass-panel relative overflow-hidden rounded-2xl p-5 sm:p-6 shadow-[0_8px_32px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.4)] border border-white/80 dark:border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.95)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.12)]">
+        {/* Specular ambient light refraction */}
+        <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-br from-teal-500/20 via-emerald-500/10 to-transparent blur-3xl pointer-events-none -mr-20 -mt-20" />
+        <div className="absolute bottom-0 left-1/4 w-60 h-24 bg-cyan-500/10 blur-2xl pointer-events-none" />
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="flex items-start gap-4">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-teal-500 to-emerald-600 flex items-center justify-center text-white shadow-md shadow-teal-500/30 shrink-0">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-teal-500 to-emerald-600 flex items-center justify-center text-white shadow-lg shadow-teal-500/30 ring-1 ring-white/30 shrink-0">
               <Sigma className="w-6 h-6" />
             </div>
             <div>
@@ -150,16 +152,16 @@ def sigmoid(z: np.ndarray) -> np.ndarray:
             </div>
           </div>
 
-          {/* Target Language Selector */}
-          <div className="flex items-center gap-2 self-start md:self-center bg-white/80 dark:bg-slate-900/80 backdrop-blur-xs p-2 rounded-xl border border-slate-200/80 dark:border-slate-800 shadow-xs">
-            <label htmlFor="language-select" className="text-xs font-medium text-slate-500 dark:text-slate-400 pl-1">
+          {/* Target Language Selector with Frosted Glass Pill */}
+          <div className="flex items-center gap-2 self-start md:self-center glass-panel p-2 rounded-xl border border-white/80 dark:border-white/10 shadow-xs">
+            <label htmlFor="language-select" className="text-xs font-medium text-slate-600 dark:text-slate-400 pl-1">
               Target Language:
             </label>
             <select
               id="language-select"
               value={targetLanguage}
               onChange={(e) => setTargetLanguage(e.target.value)}
-              className="px-3 py-1.5 rounded-lg border border-teal-500/30 dark:border-teal-500/40 bg-teal-50/50 dark:bg-teal-950/40 text-teal-900 dark:text-teal-200 text-xs font-mono font-medium focus:outline-none focus:ring-2 focus:ring-teal-500"
+              className="px-3 py-1.5 rounded-lg border border-teal-500/30 dark:border-teal-500/40 bg-teal-50/70 dark:bg-teal-950/60 backdrop-blur-md text-teal-900 dark:text-teal-200 text-xs font-mono font-medium focus:outline-none focus:ring-2 focus:ring-teal-500 cursor-pointer"
             >
               <option value="python">Python 3.11 (NumPy / SciPy)</option>
               <option value="julia" disabled>Julia (Coming Soon)</option>
@@ -275,12 +277,12 @@ def sigmoid(z: np.ndarray) -> np.ndarray:
           {/* Conversion Status Banner */}
           {conversionResult && (
             <div
-              className={`p-3.5 rounded-xl border transition-all ${
+              className={`p-4 rounded-2xl border transition-all glass-panel shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] ${
                 conversionResult.status === 'success'
-                  ? 'bg-emerald-50/70 dark:bg-emerald-950/20 border-emerald-200 dark:border-emerald-800/50 text-emerald-950 dark:text-emerald-100'
+                  ? 'bg-emerald-50/70 dark:bg-emerald-950/30 border-emerald-500/30 dark:border-emerald-500/30 text-emerald-950 dark:text-emerald-100'
                   : conversionResult.status === 'unsupported_syntax'
-                  ? 'bg-amber-50/70 dark:bg-amber-950/20 border-amber-200 dark:border-amber-800/50 text-amber-950 dark:text-amber-100'
-                  : 'bg-rose-50/70 dark:bg-rose-950/20 border-rose-200 dark:border-rose-800/50 text-rose-950 dark:text-rose-100'
+                  ? 'bg-amber-50/70 dark:bg-amber-950/30 border-amber-500/30 dark:border-amber-500/30 text-amber-950 dark:text-amber-100'
+                  : 'bg-rose-50/70 dark:bg-rose-950/30 border-rose-500/30 dark:border-rose-500/30 text-rose-950 dark:text-rose-100'
               }`}
             >
               <div className="flex items-start justify-between gap-3">

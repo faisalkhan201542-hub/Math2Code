@@ -271,7 +271,7 @@ export const EquationExamples: React.FC<EquationExamplesProps> = ({
             placeholder="Search presets..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-8 pr-3 py-1 text-xs rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-teal-500"
+            className="w-full pl-8 pr-3 py-1.5 text-xs rounded-xl border border-white/80 dark:border-white/10 bg-white/70 dark:bg-slate-900/60 backdrop-blur-xl text-slate-800 dark:text-slate-200 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500/50 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] transition-all"
           />
         </div>
       </div>
@@ -286,10 +286,10 @@ export const EquationExamples: React.FC<EquationExamplesProps> = ({
               key={cat}
               type="button"
               onClick={() => setActiveCategory(cat)}
-              className={`px-2.5 py-1 rounded-md text-[11px] font-medium transition-all whitespace-nowrap shrink-0 ${
+              className={`px-3 py-1 rounded-lg text-[11px] font-medium transition-all whitespace-nowrap shrink-0 cursor-pointer ${
                 isActive
-                  ? 'bg-teal-600 text-white shadow-xs'
-                  : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
+                  ? 'bg-gradient-to-r from-teal-500 to-emerald-600 text-white shadow-md shadow-teal-500/25 ring-1 ring-white/30'
+                  : 'glass-panel text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:border-teal-500/30'
               }`}
             >
               {cat}
@@ -300,7 +300,7 @@ export const EquationExamples: React.FC<EquationExamplesProps> = ({
 
       {/* Presets Grid (6 Columns on lg screens, matching Derivation page) */}
       {filteredExamples.length === 0 ? (
-        <div className="p-4 text-center border border-dashed border-slate-200 dark:border-slate-800 rounded-xl bg-slate-50/50 dark:bg-slate-900/30">
+        <div className="p-4 text-center border border-dashed border-white/60 dark:border-white/10 rounded-2xl glass-panel">
           <p className="text-xs text-slate-500 dark:text-slate-400">
             No presets matching &quot;{searchQuery}&quot;
           </p>
@@ -310,7 +310,7 @@ export const EquationExamples: React.FC<EquationExamplesProps> = ({
               setSearchQuery('');
               setActiveCategory('All');
             }}
-            className="mt-1 text-xs text-teal-600 dark:text-teal-400 hover:underline"
+            className="mt-1 text-xs text-teal-600 dark:text-teal-400 hover:underline cursor-pointer"
           >
             Reset Filters
           </button>
@@ -325,18 +325,18 @@ export const EquationExamples: React.FC<EquationExamplesProps> = ({
                 type="button"
                 onClick={() => onSelect(ex.latex)}
                 title={`${ex.name} (${ex.category})\n${ex.latex}`}
-                className={`p-2.5 rounded-xl border text-left transition-all text-xs flex flex-col justify-between group ${
+                className={`p-2.5 rounded-xl border text-left transition-all duration-200 text-xs flex flex-col justify-between group cursor-pointer ${
                   isSelected
-                    ? 'bg-teal-50 dark:bg-teal-950/40 border-teal-500 dark:border-teal-600 ring-2 ring-teal-500/30 shadow-xs'
-                    : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 hover:border-teal-400/60 dark:hover:border-teal-600/60 hover:bg-teal-50/20 dark:hover:bg-slate-800/50'
+                    ? 'glass-panel bg-teal-50/80 dark:bg-teal-950/50 border-teal-500 dark:border-teal-500 ring-2 ring-teal-500/30 shadow-md shadow-teal-500/10'
+                    : 'glass-panel text-slate-800 dark:text-slate-200 hover:border-teal-400/50 dark:hover:border-teal-500/40 hover:-translate-y-0.5 hover:shadow-md'
                 }`}
               >
                 <div className="flex items-center justify-between gap-1 w-full mb-1">
-                  <span className="font-semibold text-slate-800 dark:text-slate-200 truncate group-hover:text-teal-600 dark:group-hover:text-teal-400">
+                  <span className="font-semibold text-slate-800 dark:text-slate-200 truncate group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">
                     {ex.name}
                   </span>
                   <span
-                    className="text-[10px] px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 font-mono shrink-0"
+                    className="text-[10px] px-1.5 py-0.5 rounded-md bg-slate-200/50 dark:bg-slate-800/60 text-slate-500 dark:text-slate-400 font-mono shrink-0 border border-white/40 dark:border-white/5"
                     title={ex.category}
                   >
                     {ex.category.split(' ')[0]}

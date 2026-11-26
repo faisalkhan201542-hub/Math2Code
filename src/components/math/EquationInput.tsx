@@ -138,8 +138,8 @@ export const EquationInput = forwardRef<EquationInputRef, EquationInputProps>(({
         </div>
       </div>
 
-      {/* Multiline Input Textarea */}
-      <div className="relative rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-950 focus-within:border-teal-500 focus-within:ring-2 focus-within:ring-teal-500/20 transition-all overflow-hidden shadow-2xs">
+      {/* Multiline Input Textarea with Frosted Glass Surface */}
+      <div className="relative rounded-xl border border-white/80 dark:border-white/10 bg-white/70 dark:bg-[#070b16]/70 backdrop-blur-xl focus-within:border-teal-500/60 focus-within:ring-2 focus-within:ring-teal-500/20 transition-all overflow-hidden shadow-[inset_0_1px_2px_rgba(0,0,0,0.06)] dark:shadow-[inset_0_1px_2px_rgba(0,0,0,0.3)]">
         <textarea
           id="equation-latex-input"
           ref={textareaRef}

@@ -125,15 +125,15 @@ export const DashboardPage: React.FC = () => {
   return (
     <div className="space-y-6 sm:space-y-8 animate-in fade-in duration-200">
       {/* Modern Scientific Hero Card */}
-      <div className="relative overflow-hidden rounded-2xl border border-slate-200/80 dark:border-slate-800 bg-gradient-to-br from-white via-slate-50/60 to-teal-50/30 dark:from-slate-900 dark:via-slate-900/90 dark:to-teal-950/20 p-6 sm:p-8 shadow-xs backdrop-blur-md">
+      <div className="relative overflow-hidden rounded-3xl border border-white/80 dark:border-white/10 bg-gradient-to-br from-white/70 via-white/40 to-teal-50/30 dark:from-slate-900/70 dark:via-slate-900/50 dark:to-teal-950/20 backdrop-blur-2xl p-6 sm:p-9 shadow-[0_8px_32px_0_rgba(13,148,136,0.08)] shadow-[inset_0_1px_1px_rgba(255,255,255,0.95)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.12)]">
         {/* Subtle Ambient Glow Elements */}
-        <div className="pointer-events-none absolute -top-20 -right-20 w-72 h-72 rounded-full bg-teal-500/10 dark:bg-teal-500/15 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-20 -left-20 w-72 h-72 rounded-full bg-indigo-500/10 dark:bg-indigo-500/10 blur-3xl" />
+        <div className="pointer-events-none absolute -top-20 -right-20 w-80 h-80 rounded-full bg-teal-500/15 dark:bg-teal-500/20 blur-3xl animate-pulse" style={{ animationDuration: '7s' }} />
+        <div className="pointer-events-none absolute -bottom-20 -left-20 w-80 h-80 rounded-full bg-indigo-500/15 dark:bg-indigo-500/15 blur-3xl" />
 
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="max-w-2xl">
             <div className="flex items-center gap-2 mb-2.5">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold uppercase tracking-wider text-teal-700 dark:text-teal-300 bg-teal-50 dark:bg-teal-950/60 border border-teal-200 dark:border-teal-800/60 font-mono">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-teal-700 dark:text-teal-300 bg-white/60 dark:bg-teal-950/60 border border-white/80 dark:border-teal-500/30 font-mono backdrop-blur-md shadow-2xs">
                 <Cpu className="w-3.5 h-3.5 text-teal-500" />
                 Scientific Computing Environment
               </span>
@@ -148,7 +148,7 @@ export const DashboardPage: React.FC = () => {
                 Equation ↔ Code
               </span>
             </h1>
-            <p className="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed">
+            <p className="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
               High-performance scientific environment bridging formal analytical mathematics and vectorized Python algorithms with automated AST decompilation, step-by-step derivations, and interactive plotting.
             </p>
           </div>
@@ -159,7 +159,7 @@ export const DashboardPage: React.FC = () => {
               size="md"
               onClick={() => navigate('/library')}
               leftIcon={<Library className="w-4 h-4 text-teal-500" />}
-              className="bg-white/80 dark:bg-slate-800/80 hover:bg-slate-100 dark:hover:bg-slate-700/80 shadow-xs"
+              className="rounded-xl shadow-xs"
             >
               Equation Library
             </Button>
@@ -168,6 +168,7 @@ export const DashboardPage: React.FC = () => {
               size="md"
               onClick={() => navigate('/equation-to-code')}
               rightIcon={<ArrowRight className="w-4 h-4" />}
+              className="rounded-xl shadow-md shadow-teal-500/20"
             >
               Start Synthesis
             </Button>
@@ -196,14 +197,14 @@ export const DashboardPage: React.FC = () => {
             return (
               <Card
                 key={idx}
-                className={`relative overflow-hidden ${theme.borderTop} hover:shadow-md transition-all duration-200`}
+                className={`relative overflow-hidden glass-panel glass-interactive rounded-2xl ${theme.borderTop} transition-all duration-200`}
               >
                 <CardContent className="p-5">
                   <div className="flex items-center justify-between gap-2 mb-2">
                     <span className="text-xs font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wide">
                       {stat.label}
                     </span>
-                    <div className={`p-2 rounded-lg ${theme.iconBg}`}>
+                    <div className={`p-2.5 rounded-xl backdrop-blur-md shadow-2xs ${theme.iconBg}`}>
                       <StatIcon className="w-4 h-4" />
                     </div>
                   </div>
@@ -212,8 +213,8 @@ export const DashboardPage: React.FC = () => {
                     {stat.value}
                   </div>
 
-                  <div className="mt-2 flex items-center gap-2">
-                    <span className={`text-[11px] font-mono px-2 py-0.5 rounded-md ${theme.badgeClass}`}>
+                  <div className="mt-2.5 flex items-center gap-2">
+                    <span className={`text-[11px] font-mono px-2.5 py-0.5 rounded-lg backdrop-blur-md shadow-2xs ${theme.badgeClass}`}>
                       {stat.change}
                     </span>
                   </div>
@@ -245,13 +246,13 @@ export const DashboardPage: React.FC = () => {
             return (
               <Card
                 key={idx}
-                className={`group cursor-pointer transition-all duration-200 hover:-translate-y-1 ${action.hoverClass}`}
+                className={`group cursor-pointer glass-panel glass-interactive rounded-2xl transition-all duration-200 hover:-translate-y-1.5 ${action.hoverClass}`}
                 onClick={() => navigate(action.path)}
               >
                 <CardContent className="p-5 flex flex-col h-full justify-between">
                   <div>
                     <div className="flex items-center justify-between gap-2 mb-3">
-                      <div className={`p-3 rounded-xl transition-all duration-200 shrink-0 ${action.iconClass}`}>
+                      <div className={`p-3 rounded-xl transition-all duration-200 shrink-0 backdrop-blur-md shadow-2xs ${action.iconClass}`}>
                         <Icon className="w-5 h-5" />
                       </div>
                       <Badge variant={action.badgeVariant} size="sm">
@@ -268,11 +269,11 @@ export const DashboardPage: React.FC = () => {
                     </p>
                   </div>
 
-                  <div className="pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between">
+                  <div className="pt-3 border-t border-slate-200/60 dark:border-white/5 flex items-center justify-between">
                     <span className="text-[11px] font-mono text-slate-400 dark:text-slate-500">
                       {action.tag}
                     </span>
-                    <div className={`flex items-center gap-1 text-xs font-semibold ${action.accentText} group-hover:translate-x-1 transition-transform`}>
+                    <div className={`flex items-center gap-1 text-xs font-semibold ${action.accentText} group-hover:translate-x-1.5 transition-transform`}>
                       <span>Open Engine</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </div>

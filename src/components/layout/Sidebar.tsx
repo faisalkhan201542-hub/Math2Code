@@ -119,20 +119,20 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
       {/* Sidebar Container */}
       <aside
-        className={`fixed top-0 bottom-0 left-0 z-40 flex flex-col bg-white/95 dark:bg-slate-900/95 backdrop-blur-md text-slate-800 dark:text-slate-200 border-r border-slate-200/90 dark:border-slate-800 shadow-xs dark:shadow-none transition-all duration-200 ease-in-out overflow-hidden
+        className={`fixed top-0 bottom-0 left-0 z-40 flex flex-col bg-white/75 dark:bg-[#080d1a]/75 backdrop-blur-2xl text-slate-800 dark:text-slate-200 border-r border-white/70 dark:border-white/10 shadow-[4px_0_30px_rgba(0,0,0,0.03)] dark:shadow-[4px_0_35px_rgba(0,0,0,0.4)] transition-all duration-200 ease-in-out overflow-hidden
           ${isCollapsed ? 'w-20' : 'w-64'}
           ${isMobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
         `}
       >
         {/* Subtle decorative glowing background orbs */}
-        <div className="absolute -top-10 -right-10 w-36 h-36 bg-teal-500/10 dark:bg-teal-500/15 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute top-1/2 -left-12 w-32 h-32 bg-indigo-500/10 dark:bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-10 right-0 w-36 h-36 bg-purple-500/10 dark:bg-purple-500/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -top-10 -right-10 w-44 h-44 bg-teal-500/15 dark:bg-teal-500/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-1/2 -left-12 w-40 h-40 bg-indigo-500/15 dark:bg-indigo-500/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-10 right-0 w-44 h-44 bg-purple-500/15 dark:bg-purple-500/15 rounded-full blur-3xl pointer-events-none" />
 
         {/* Brand / Logo Header */}
-        <div className="relative z-10 flex items-center justify-between h-16 px-4 border-b border-slate-200/90 dark:border-slate-800/80 bg-slate-50/70 dark:bg-slate-950/40">
+        <div className="relative z-10 flex items-center justify-between h-16 px-4 border-b border-white/60 dark:border-white/10 bg-white/40 dark:bg-slate-950/40 backdrop-blur-md">
           <div className="flex items-center gap-3 overflow-hidden">
-            <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br from-teal-500 via-cyan-500 to-indigo-600 text-white shrink-0 font-mono font-black text-lg shadow-md shadow-teal-500/25 ring-1 ring-black/5 dark:ring-white/20">
+            <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br from-teal-500 via-cyan-500 to-indigo-600 text-white shrink-0 font-mono font-black text-lg shadow-md shadow-teal-500/25 ring-1 ring-white/40 dark:ring-white/20">
               ∑
             </div>
             {!isCollapsed && (
@@ -232,7 +232,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
         {/* Bottom Engine Status Card (when expanded) */}
         {!isCollapsed && (
-          <div className="relative z-10 p-2.5 mx-3 mb-2 rounded-xl bg-slate-50/90 dark:bg-slate-950/60 border border-slate-200/90 dark:border-slate-800/80 shadow-xs dark:shadow-inner">
+          <div className="relative z-10 p-2.5 mx-3 mb-2 rounded-xl bg-white/40 dark:bg-slate-900/40 border border-white/60 dark:border-white/10 backdrop-blur-md shadow-2xs">
             <div className="flex items-center justify-between text-[11px] mb-1">
               <span className="text-slate-600 dark:text-slate-400 font-medium flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 dark:bg-emerald-400 shadow-xs shadow-emerald-400/50 animate-pulse" />
@@ -249,10 +249,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
         )}
 
         {/* Desktop Collapse Toggle */}
-        <div className="relative z-10 p-3 border-t border-slate-200/90 dark:border-slate-800/80 bg-slate-50/50 dark:bg-slate-950/30 hidden lg:block">
+        <div className="relative z-10 p-3 border-t border-white/60 dark:border-white/10 bg-white/30 dark:bg-slate-950/30 backdrop-blur-md hidden lg:block">
           <button
             onClick={onToggleCollapse}
-            className="flex items-center justify-center w-full py-1.5 text-xs text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-400 dark:hover:text-slate-200 dark:hover:bg-slate-800 rounded-lg transition-colors gap-1.5 cursor-pointer"
+            className="flex items-center justify-center w-full py-1.5 text-xs text-slate-600 hover:text-slate-900 hover:bg-white/60 dark:text-slate-400 dark:hover:text-slate-200 dark:hover:bg-slate-800/60 rounded-xl border border-transparent hover:border-white/60 dark:hover:border-white/10 transition-all gap-1.5 cursor-pointer shadow-2xs"
             aria-label={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
           >
             {isCollapsed ? (

@@ -49,11 +49,11 @@ export const PlotVisualizer = forwardRef<PlotVisualizerRef, PlotVisualizerProps>
       if (!container) return;
 
       const isDark = theme === 'dark';
-      const bgColor = isDark ? '#020617' : '#f8fafc';
-      const paperColor = isDark ? '#0f172a' : '#ffffff';
+      const bgColor = isDark ? 'rgba(7, 11, 22, 0.45)' : 'rgba(255, 255, 255, 0.45)';
+      const paperColor = 'transparent';
       const textColor = isDark ? '#94a3b8' : '#475569';
-      const gridColor = isDark ? '#1e293b' : '#e2e8f0';
-      const zeroColor = isDark ? '#475569' : '#94a3b8';
+      const gridColor = isDark ? 'rgba(51, 65, 85, 0.35)' : 'rgba(226, 232, 240, 0.7)';
+      const zeroColor = isDark ? 'rgba(100, 116, 139, 0.6)' : 'rgba(148, 163, 184, 0.8)';
 
       // Build plot traces
       const visibleCurves = curves.filter((c) => c.visible && !c.hasError && c.points.length > 0);

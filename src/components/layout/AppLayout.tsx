@@ -49,11 +49,17 @@ export const AppLayout: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50/90 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex transition-colors duration-200 relative selection:bg-teal-500/20 selection:text-teal-900 dark:selection:text-teal-200">
-      {/* Ambient background lighting effects */}
+    <div className="min-h-screen bg-slate-50 dark:bg-[#060a12] text-slate-900 dark:text-slate-100 flex transition-colors duration-200 relative selection:bg-teal-500/20 selection:text-teal-900 dark:selection:text-teal-200 overflow-x-hidden">
+      {/* Dynamic Luminous Glassmorphic Aurora Background */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute -top-40 left-1/3 w-[600px] h-[600px] bg-radial from-teal-500/10 via-emerald-500/5 to-transparent blur-3xl opacity-70 dark:opacity-30" />
-        <div className="absolute top-1/2 -right-40 w-[500px] h-[500px] bg-radial from-indigo-500/10 via-purple-500/5 to-transparent blur-3xl opacity-60 dark:opacity-20" />
+        {/* Subtle geometric crystal grid */}
+        <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] dark:bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:28px_28px] opacity-35 dark:opacity-25" />
+
+        {/* Ambient glowing crystal light orbs */}
+        <div className="absolute -top-32 -left-20 w-[650px] h-[650px] bg-gradient-to-br from-teal-400/25 via-emerald-500/15 to-transparent rounded-full blur-[100px] opacity-75 dark:opacity-35 animate-pulse" style={{ animationDuration: '8s' }} />
+        <div className="absolute top-1/4 -right-40 w-[600px] h-[600px] bg-gradient-to-bl from-indigo-500/25 via-purple-500/15 to-transparent rounded-full blur-[110px] opacity-70 dark:opacity-30" />
+        <div className="absolute bottom-10 left-1/3 w-[550px] h-[450px] bg-gradient-to-tr from-cyan-400/15 via-blue-500/10 to-transparent rounded-full blur-[90px] opacity-60 dark:opacity-25" />
+        <div className="absolute -bottom-20 right-1/4 w-[500px] h-[500px] bg-gradient-to-t from-fuchsia-500/10 via-pink-500/5 to-transparent rounded-full blur-[100px] opacity-50 dark:opacity-20" />
       </div>
 
       {/* Sidebar */}
@@ -84,7 +90,7 @@ export const AppLayout: React.FC = () => {
         </main>
 
         {/* Global Footer */}
-        <footer className="mt-auto py-4 px-6 border-t border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/40 text-xs text-slate-500 dark:text-slate-400">
+        <footer className="mt-auto py-4 px-6 border-t border-white/60 dark:border-white/5 bg-white/60 dark:bg-slate-950/60 backdrop-blur-xl text-xs text-slate-500 dark:text-slate-400">
           <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
             <div className="flex items-center gap-2">
               <span className="font-semibold text-slate-700 dark:text-slate-300">
